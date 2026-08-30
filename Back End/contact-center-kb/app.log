@@ -1,0 +1,194 @@
+2026-08-27T08:52:09.475+05:30  INFO 5389 --- [contact-center-kb] [main] c.c.c.ContactCenterKbApplication         : Starting ContactCenterKbApplication using Java 26.0.1 with PID 5389 (/Users/harsha/Documents/Mini Project/Back End/contact-center-kb/target/classes started by harsha in /Users/harsha/Documents/Mini Project/Back End/contact-center-kb)
+2026-08-27T08:52:09.477+05:30  INFO 5389 --- [contact-center-kb] [main] c.c.c.ContactCenterKbApplication         : No active profile set, falling back to 1 default profile: "default"
+2026-08-27T08:52:09.652+05:30  INFO 5389 --- [contact-center-kb] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-08-27T08:52:09.667+05:30  INFO 5389 --- [contact-center-kb] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 12 ms. Found 7 JPA repository interfaces.
+2026-08-27T08:52:09.789+05:30  INFO 5389 --- [contact-center-kb] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-08-27T08:52:09.793+05:30  INFO 5389 --- [contact-center-kb] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-08-27T08:52:09.793+05:30  INFO 5389 --- [contact-center-kb] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.22]
+2026-08-27T08:52:09.806+05:30  INFO 5389 --- [contact-center-kb] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 315 ms
+2026-08-27T08:52:09.851+05:30  INFO 5389 --- [contact-center-kb] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-08-27T08:52:09.866+05:30  INFO 5389 --- [contact-center-kb] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.4.1.Final
+2026-08-27T08:52:09.963+05:30  INFO 5389 --- [contact-center-kb] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-08-27T08:52:09.971+05:30  INFO 5389 --- [contact-center-kb] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-08-27T08:52:10.109+05:30  INFO 5389 --- [contact-center-kb] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@23708f14
+2026-08-27T08:52:10.110+05:30  INFO 5389 --- [contact-center-kb] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-08-27T08:52:10.136+05:30  WARN 5389 --- [contact-center-kb] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-08-27T08:52:10.141+05:30  INFO 5389 --- [contact-center-kb] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3306/contact_center_kb]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 9.6
+	Default catalog/schema: contact_center_kb/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-08-27T08:52:10.466+05:30  INFO 5389 --- [contact-center-kb] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-08-27T08:52:10.506+05:30  INFO 5389 --- [contact-center-kb] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-08-27T08:52:10.526+05:30  INFO 5389 --- [contact-center-kb] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-08-27T08:52:10.586+05:30  WARN 5389 --- [contact-center-kb] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-08-27T08:52:10.618+05:30  WARN 5389 --- [contact-center-kb] [main] .s.a.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 3c46570b-5d9c-410e-8dd5-7c07b0712e44
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-08-27T08:52:10.621+05:30  INFO 5389 --- [contact-center-kb] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-08-27T08:52:10.751+05:30  INFO 5389 --- [contact-center-kb] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-08-27T08:52:10.753+05:30  INFO 5389 --- [contact-center-kb] [main] c.c.c.ContactCenterKbApplication         : Started ContactCenterKbApplication in 1.392 seconds (process running for 1.488)
+2026-08-27T08:54:22.233+05:30  INFO 5389 --- [contact-center-kb] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-08-27T08:54:22.234+05:30  INFO 5389 --- [contact-center-kb] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-08-27T08:54:22.235+05:30  INFO 5389 --- [contact-center-kb] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-08-27T09:04:45.337+05:30  INFO 5389 --- [contact-center-kb] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-08-27T09:04:45.341+05:30  INFO 5389 --- [contact-center-kb] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-08-27T09:04:45.344+05:30  INFO 5389 --- [contact-center-kb] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-08-27T09:04:45.346+05:30  INFO 5389 --- [contact-center-kb] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-08-27T09:04:45.349+05:30  INFO 5389 --- [contact-center-kb] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-08-27T09:04:58.304+05:30  INFO 5623 --- [contact-center-kb] [main] c.c.c.ContactCenterKbApplication         : Starting ContactCenterKbApplication using Java 26.0.1 with PID 5623 (/Users/harsha/Documents/Mini Project/Back End/contact-center-kb/target/classes started by harsha in /Users/harsha/Documents/Mini Project/Back End/contact-center-kb)
+2026-08-27T09:04:58.305+05:30  INFO 5623 --- [contact-center-kb] [main] c.c.c.ContactCenterKbApplication         : No active profile set, falling back to 1 default profile: "default"
+2026-08-27T09:04:58.473+05:30  INFO 5623 --- [contact-center-kb] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-08-27T09:04:58.488+05:30  INFO 5623 --- [contact-center-kb] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 12 ms. Found 7 JPA repository interfaces.
+2026-08-27T09:04:58.612+05:30  INFO 5623 --- [contact-center-kb] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-08-27T09:04:58.616+05:30  INFO 5623 --- [contact-center-kb] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-08-27T09:04:58.616+05:30  INFO 5623 --- [contact-center-kb] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.22]
+2026-08-27T09:04:58.628+05:30  INFO 5623 --- [contact-center-kb] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 310 ms
+2026-08-27T09:04:58.675+05:30  INFO 5623 --- [contact-center-kb] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-08-27T09:04:58.687+05:30  INFO 5623 --- [contact-center-kb] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.4.1.Final
+2026-08-27T09:04:58.791+05:30  INFO 5623 --- [contact-center-kb] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-08-27T09:04:58.798+05:30  INFO 5623 --- [contact-center-kb] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-08-27T09:04:58.896+05:30  INFO 5623 --- [contact-center-kb] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@69c1ea07
+2026-08-27T09:04:58.897+05:30  INFO 5623 --- [contact-center-kb] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-08-27T09:04:58.910+05:30  WARN 5623 --- [contact-center-kb] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-08-27T09:04:58.915+05:30  INFO 5623 --- [contact-center-kb] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3306/contact_center_kb]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 9.6
+	Default catalog/schema: contact_center_kb/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-08-27T09:04:59.216+05:30  INFO 5623 --- [contact-center-kb] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-08-27T09:04:59.242+05:30  INFO 5623 --- [contact-center-kb] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-08-27T09:04:59.263+05:30  INFO 5623 --- [contact-center-kb] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-08-27T09:04:59.322+05:30  WARN 5623 --- [contact-center-kb] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-08-27T09:04:59.344+05:30  WARN 5623 --- [contact-center-kb] [main] .s.a.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: c828a8b9-2bcf-4dc5-8490-ba92c929817e
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-08-27T09:04:59.346+05:30  INFO 5623 --- [contact-center-kb] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-08-27T09:04:59.471+05:30  INFO 5623 --- [contact-center-kb] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-08-27T09:04:59.473+05:30  INFO 5623 --- [contact-center-kb] [main] c.c.c.ContactCenterKbApplication         : Started ContactCenterKbApplication in 1.283 seconds (process running for 1.38)
+2026-08-27T09:05:24.917+05:30  INFO 5623 --- [contact-center-kb] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-08-27T09:05:24.917+05:30  INFO 5623 --- [contact-center-kb] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-08-27T09:05:24.918+05:30  INFO 5623 --- [contact-center-kb] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-08-27T09:12:33.160+05:30  INFO 5623 --- [contact-center-kb] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-08-27T09:12:33.166+05:30  INFO 5623 --- [contact-center-kb] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-08-27T09:12:33.169+05:30  INFO 5623 --- [contact-center-kb] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-08-27T09:12:33.170+05:30  INFO 5623 --- [contact-center-kb] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-08-27T09:12:33.172+05:30  INFO 5623 --- [contact-center-kb] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-08-27T09:12:40.640+05:30  INFO 5825 --- [contact-center-kb] [main] c.c.c.ContactCenterKbApplication         : Starting ContactCenterKbApplication using Java 26.0.1 with PID 5825 (/Users/harsha/Documents/Mini Project/Back End/contact-center-kb/target/classes started by harsha in /Users/harsha/Documents/Mini Project/Back End/contact-center-kb)
+2026-08-27T09:12:40.641+05:30  INFO 5825 --- [contact-center-kb] [main] c.c.c.ContactCenterKbApplication         : No active profile set, falling back to 1 default profile: "default"
+2026-08-27T09:12:40.807+05:30  INFO 5825 --- [contact-center-kb] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-08-27T09:12:40.822+05:30  INFO 5825 --- [contact-center-kb] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 12 ms. Found 7 JPA repository interfaces.
+2026-08-27T09:12:40.941+05:30  INFO 5825 --- [contact-center-kb] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-08-27T09:12:40.945+05:30  INFO 5825 --- [contact-center-kb] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-08-27T09:12:40.945+05:30  INFO 5825 --- [contact-center-kb] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.22]
+2026-08-27T09:12:40.957+05:30  INFO 5825 --- [contact-center-kb] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 303 ms
+2026-08-27T09:12:41.002+05:30  INFO 5825 --- [contact-center-kb] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-08-27T09:12:41.017+05:30  INFO 5825 --- [contact-center-kb] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.4.1.Final
+2026-08-27T09:12:41.114+05:30  INFO 5825 --- [contact-center-kb] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-08-27T09:12:41.121+05:30  INFO 5825 --- [contact-center-kb] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-08-27T09:12:41.216+05:30  INFO 5825 --- [contact-center-kb] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@69c1ea07
+2026-08-27T09:12:41.217+05:30  INFO 5825 --- [contact-center-kb] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-08-27T09:12:41.230+05:30  WARN 5825 --- [contact-center-kb] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-08-27T09:12:41.235+05:30  INFO 5825 --- [contact-center-kb] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3306/contact_center_kb]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 9.6
+	Default catalog/schema: contact_center_kb/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-08-27T09:12:41.521+05:30  INFO 5825 --- [contact-center-kb] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-08-27T09:12:41.548+05:30  INFO 5825 --- [contact-center-kb] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-08-27T09:12:41.568+05:30  INFO 5825 --- [contact-center-kb] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-08-27T09:12:41.623+05:30  WARN 5825 --- [contact-center-kb] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-08-27T09:12:41.643+05:30  WARN 5825 --- [contact-center-kb] [main] .s.a.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 137cb0d2-42c4-4431-a5ab-80449c5a1560
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-08-27T09:12:41.645+05:30  INFO 5825 --- [contact-center-kb] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-08-27T09:12:41.764+05:30  INFO 5825 --- [contact-center-kb] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-08-27T09:12:41.766+05:30  INFO 5825 --- [contact-center-kb] [main] c.c.c.ContactCenterKbApplication         : Started ContactCenterKbApplication in 1.238 seconds (process running for 1.334)
+2026-08-27T09:13:04.830+05:30  INFO 5825 --- [contact-center-kb] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-08-27T09:13:04.831+05:30  INFO 5825 --- [contact-center-kb] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-08-27T09:13:04.832+05:30  INFO 5825 --- [contact-center-kb] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-08-27T09:18:27.369+05:30  WARN 5825 --- [contact-center-kb] [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m16s1ms).
+2026-08-27T09:19:27.447+05:30  INFO 5825 --- [contact-center-kb] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-08-27T09:19:27.451+05:30  INFO 5825 --- [contact-center-kb] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-08-27T09:19:27.454+05:30  INFO 5825 --- [contact-center-kb] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-08-27T09:19:27.456+05:30  INFO 5825 --- [contact-center-kb] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-08-27T09:19:27.460+05:30  INFO 5825 --- [contact-center-kb] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-08-27T09:22:26.143+05:30  INFO 6044 --- [contact-center-kb] [main] c.c.c.ContactCenterKbApplication         : Starting ContactCenterKbApplication using Java 26.0.1 with PID 6044 (/Users/harsha/Documents/Mini Project/Back End/contact-center-kb/target/classes started by harsha in /Users/harsha/Documents/Mini Project/Back End/contact-center-kb)
+2026-08-27T09:22:26.143+05:30  INFO 6044 --- [contact-center-kb] [main] c.c.c.ContactCenterKbApplication         : No active profile set, falling back to 1 default profile: "default"
+2026-08-27T09:22:26.339+05:30  INFO 6044 --- [contact-center-kb] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-08-27T09:22:26.356+05:30  INFO 6044 --- [contact-center-kb] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 13 ms. Found 7 JPA repository interfaces.
+2026-08-27T09:22:26.480+05:30  INFO 6044 --- [contact-center-kb] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-08-27T09:22:26.483+05:30  INFO 6044 --- [contact-center-kb] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-08-27T09:22:26.484+05:30  INFO 6044 --- [contact-center-kb] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.22]
+2026-08-27T09:22:26.494+05:30  INFO 6044 --- [contact-center-kb] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 338 ms
+2026-08-27T09:22:26.539+05:30  INFO 6044 --- [contact-center-kb] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-08-27T09:22:26.557+05:30  INFO 6044 --- [contact-center-kb] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.4.1.Final
+2026-08-27T09:22:26.664+05:30  INFO 6044 --- [contact-center-kb] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-08-27T09:22:26.672+05:30  INFO 6044 --- [contact-center-kb] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-08-27T09:22:26.767+05:30  INFO 6044 --- [contact-center-kb] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3749c2b
+2026-08-27T09:22:26.768+05:30  INFO 6044 --- [contact-center-kb] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-08-27T09:22:26.785+05:30  WARN 6044 --- [contact-center-kb] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-08-27T09:22:26.790+05:30  INFO 6044 --- [contact-center-kb] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3306/contact_center_kb]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 9.6
+	Default catalog/schema: contact_center_kb/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-08-27T09:22:27.111+05:30  INFO 6044 --- [contact-center-kb] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-08-27T09:22:27.140+05:30  INFO 6044 --- [contact-center-kb] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-08-27T09:22:27.161+05:30  INFO 6044 --- [contact-center-kb] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-08-27T09:22:27.218+05:30  WARN 6044 --- [contact-center-kb] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-08-27T09:22:27.241+05:30  WARN 6044 --- [contact-center-kb] [main] .s.a.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 69fb69d7-c4bf-46bf-80f1-f94524dfe1a7
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-08-27T09:22:27.243+05:30  INFO 6044 --- [contact-center-kb] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-08-27T09:22:27.391+05:30  INFO 6044 --- [contact-center-kb] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-08-27T09:22:27.394+05:30  INFO 6044 --- [contact-center-kb] [main] c.c.c.ContactCenterKbApplication         : Started ContactCenterKbApplication in 1.384 seconds (process running for 1.605)
+2026-08-27T09:23:46.001+05:30  INFO 6044 --- [contact-center-kb] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-08-27T09:23:46.001+05:30  INFO 6044 --- [contact-center-kb] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-08-27T09:23:46.002+05:30  INFO 6044 --- [contact-center-kb] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2026-08-27T09:32:06.098+05:30  WARN 6044 --- [contact-center-kb] [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=5m39s197ms).
+2026-08-27T09:36:53.415+05:30  INFO 6044 --- [contact-center-kb] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-08-27T09:36:53.418+05:30  INFO 6044 --- [contact-center-kb] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-08-27T09:36:53.420+05:30  INFO 6044 --- [contact-center-kb] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-08-27T09:36:53.421+05:30  INFO 6044 --- [contact-center-kb] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-08-27T09:36:53.423+05:30  INFO 6044 --- [contact-center-kb] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

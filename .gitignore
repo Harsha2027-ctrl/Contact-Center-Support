@@ -1,0 +1,7 @@
+.DS_Store
+*.zip
+target/
+.idea/
+*.class
+node_modules/
+.env
