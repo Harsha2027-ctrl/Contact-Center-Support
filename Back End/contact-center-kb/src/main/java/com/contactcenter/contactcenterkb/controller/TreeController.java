@@ -1,6 +1,7 @@
 package com.contactcenter.contactcenterkb.controller;
 
 import com.contactcenter.contactcenterkb.dto.TreeRequest;
+import com.contactcenter.contactcenterkb.dto.TreeResponse;
 import com.contactcenter.contactcenterkb.entity.Tree;
 import com.contactcenter.contactcenterkb.entity.User;
 import com.contactcenter.contactcenterkb.repository.UserRepository;
@@ -12,6 +13,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/trees")
@@ -22,43 +24,52 @@ public class TreeController {
     private final UserRepository userRepository;
 
     @PostMapping
-    public ResponseEntity<Tree> createTree(@Valid @RequestBody TreeRequest request) {
+    public ResponseEntity<TreeResponse> createTree(@Valid @RequestBody TreeRequest request) {
         String email = SecurityContextHolder.getContext().getAuthentication().getName();
         User currentUser = userRepository.findByEmail(email)
                 .orElseThrow(() -> new IllegalArgumentException("User not found"));
 
         Tree tree = treeService.createTree(request.getCategoryId(), request.getName(), currentUser);
-        return ResponseEntity.ok(tree);
+        return ResponseEntity.ok(treeService.toResponse(tree));
     }
 
     @GetMapping
-    public ResponseEntity<List<Tree>> getAllTrees() {
-        return ResponseEntity.ok(treeService.getAllTrees());
+    public ResponseEntity<List<TreeResponse>> getAllTrees() {
+        List<TreeResponse> trees = treeService.getAllTrees().stream()
+                .map(treeService::toResponse)
+                .collect(Collectors.toList());
+        return ResponseEntity.ok(trees);
     }
 
     @GetMapping("/published")
-    public ResponseEntity<List<Tree>> getPublishedTrees() {
-        return ResponseEntity.ok(treeService.getPublishedTrees());
+    public ResponseEntity<List<TreeResponse>> getPublishedTrees() {
+        List<TreeResponse> trees = treeService.getPublishedTrees().stream()
+                .map(treeService::toResponse)
+                .collect(Collectors.toList());
+        return ResponseEntity.ok(trees);
     }
 
     @GetMapping("/category/{categoryId}")
-    public ResponseEntity<List<Tree>> getTreesByCategory(@PathVariable Long categoryId) {
-        return ResponseEntity.ok(treeService.getTreesByCategory(categoryId));
+    public ResponseEntity<List<TreeResponse>> getTreesByCategory(@PathVariable Long categoryId) {
+        List<TreeResponse> trees = treeService.getTreesByCategory(categoryId).stream()
+                .map(treeService::toResponse)
+                .collect(Collectors.toList());
+        return ResponseEntity.ok(trees);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Tree> getTreeById(@PathVariable Long id) {
-        return ResponseEntity.ok(treeService.getTreeById(id));
+    public ResponseEntity<TreeResponse> getTreeById(@PathVariable Long id) {
+        return ResponseEntity.ok(treeService.toResponse(treeService.getTreeById(id)));
     }
 
     @PutMapping("/{id}/publish")
-    public ResponseEntity<Tree> publishTree(@PathVariable Long id) {
-        return ResponseEntity.ok(treeService.publishTree(id));
+    public ResponseEntity<TreeResponse> publishTree(@PathVariable Long id) {
+        return ResponseEntity.ok(treeService.toResponse(treeService.publishTree(id)));
     }
 
     @PutMapping("/{id}/unpublish")
-    public ResponseEntity<Tree> unpublishTree(@PathVariable Long id) {
-        return ResponseEntity.ok(treeService.unpublishTree(id));
+    public ResponseEntity<TreeResponse> unpublishTree(@PathVariable Long id) {
+        return ResponseEntity.ok(treeService.toResponse(treeService.unpublishTree(id)));
     }
 
     @DeleteMapping("/{id}")

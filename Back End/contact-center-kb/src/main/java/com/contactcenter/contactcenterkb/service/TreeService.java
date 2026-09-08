@@ -7,6 +7,7 @@ import com.contactcenter.contactcenterkb.repository.CategoryRepository;
 import com.contactcenter.contactcenterkb.repository.TreeRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import com.contactcenter.contactcenterkb.dto.TreeResponse;
 
 import java.util.List;
 
@@ -63,5 +64,18 @@ public class TreeService {
     public void deleteTree(Long id) {
         Tree tree = getTreeById(id);
         treeRepository.delete(tree);
+    }
+
+    public TreeResponse toResponse(Tree tree) {
+        return new TreeResponse(
+                tree.getId(),
+                tree.getCategory().getId(),
+                tree.getCategory().getName(),
+                tree.getName(),
+                tree.getVersion(),
+                tree.getIsPublished(),
+                tree.getCreatedBy() != null ? tree.getCreatedBy().getName() : null,
+                tree.getCreatedAt()
+        );
     }
 }
