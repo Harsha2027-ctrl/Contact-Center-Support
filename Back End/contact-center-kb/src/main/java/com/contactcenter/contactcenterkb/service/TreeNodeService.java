@@ -1,14 +1,17 @@
 package com.contactcenter.contactcenterkb.service;
 
+import com.contactcenter.contactcenterkb.dto.NodeOptionResponse;
+import com.contactcenter.contactcenterkb.dto.NodeWithOptionsResponse;
+import com.contactcenter.contactcenterkb.dto.TreeNodeResponse;
 import com.contactcenter.contactcenterkb.entity.Tree;
 import com.contactcenter.contactcenterkb.entity.TreeNode;
 import com.contactcenter.contactcenterkb.repository.TreeNodeRepository;
 import com.contactcenter.contactcenterkb.repository.TreeRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import com.contactcenter.contactcenterkb.dto.TreeNodeResponse;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -16,6 +19,7 @@ public class TreeNodeService {
 
     private final TreeNodeRepository treeNodeRepository;
     private final TreeRepository treeRepository;
+    private final NodeOptionService nodeOptionService;
 
     public TreeNode createNode(Long treeId, String nodeType, String questionText,
                                String resolutionText, Long parentNodeId) {
@@ -55,6 +59,7 @@ public class TreeNodeService {
         TreeNode node = getNodeById(id);
         treeNodeRepository.delete(node);
     }
+
     public TreeNodeResponse toResponse(TreeNode node) {
         return new TreeNodeResponse(
                 node.getId(),
@@ -63,6 +68,22 @@ public class TreeNodeService {
                 node.getQuestionText(),
                 node.getResolutionText(),
                 node.getParentNode() != null ? node.getParentNode().getId() : null
+        );
+    }
+
+    public NodeWithOptionsResponse getNodeWithOptions(Long nodeId) {
+        TreeNode node = getNodeById(nodeId);
+
+        List<NodeOptionResponse> options = nodeOptionService.getOptionsByNode(nodeId).stream()
+                .map(nodeOptionService::toResponse)
+                .collect(Collectors.toList());
+
+        return new NodeWithOptionsResponse(
+                node.getId(),
+                node.getNodeType().name(),
+                node.getQuestionText(),
+                node.getResolutionText(),
+                options
         );
     }
 }

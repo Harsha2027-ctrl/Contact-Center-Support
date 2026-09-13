@@ -6,6 +6,7 @@ import com.contactcenter.contactcenterkb.repository.NodeOptionRepository;
 import com.contactcenter.contactcenterkb.repository.TreeNodeRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import com.contactcenter.contactcenterkb.dto.NodeOptionResponse;
 
 import java.util.List;
 
@@ -43,5 +44,14 @@ public class NodeOptionService {
     public void deleteOption(Long id) {
         NodeOption option = getOptionById(id);
         nodeOptionRepository.delete(option);
+    }
+
+    public NodeOptionResponse toResponse(NodeOption option) {
+        return new NodeOptionResponse(
+                option.getId(),
+                option.getNode().getId(),
+                option.getOptionLabel(),
+                option.getNextNode().getId()
+        );
     }
 }

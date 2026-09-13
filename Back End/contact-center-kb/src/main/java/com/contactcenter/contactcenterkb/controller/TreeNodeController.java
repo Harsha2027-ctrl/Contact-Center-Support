@@ -1,5 +1,6 @@
 package com.contactcenter.contactcenterkb.controller;
 
+import com.contactcenter.contactcenterkb.dto.NodeWithOptionsResponse;
 import com.contactcenter.contactcenterkb.dto.TreeNodeRequest;
 import com.contactcenter.contactcenterkb.dto.TreeNodeResponse;
 import com.contactcenter.contactcenterkb.entity.TreeNode;
@@ -47,6 +48,11 @@ public class TreeNodeController {
     @GetMapping("/{id}")
     public ResponseEntity<TreeNodeResponse> getNodeById(@PathVariable Long id) {
         return ResponseEntity.ok(treeNodeService.toResponse(treeNodeService.getNodeById(id)));
+    }
+
+    @GetMapping("/{id}/with-options")
+    public ResponseEntity<NodeWithOptionsResponse> getNodeWithOptions(@PathVariable Long id) {
+        return ResponseEntity.ok(treeNodeService.getNodeWithOptions(id));
     }
 
     @DeleteMapping("/{id}")
