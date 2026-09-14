@@ -8,6 +8,7 @@ import com.contactcenter.contactcenterkb.service.TreeNodeService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,6 +21,7 @@ public class TreeNodeController {
 
     private final TreeNodeService treeNodeService;
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping
     public ResponseEntity<TreeNodeResponse> createNode(@Valid @RequestBody TreeNodeRequest request) {
         TreeNode node = treeNodeService.createNode(
@@ -55,6 +57,7 @@ public class TreeNodeController {
         return ResponseEntity.ok(treeNodeService.getNodeWithOptions(id));
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteNode(@PathVariable Long id) {
         treeNodeService.deleteNode(id);

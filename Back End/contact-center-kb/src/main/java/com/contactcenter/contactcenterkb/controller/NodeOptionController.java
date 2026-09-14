@@ -7,6 +7,7 @@ import com.contactcenter.contactcenterkb.service.NodeOptionService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,6 +20,7 @@ public class NodeOptionController {
 
     private final NodeOptionService nodeOptionService;
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping
     public ResponseEntity<NodeOptionResponse> createOption(@Valid @RequestBody NodeOptionRequest request) {
         NodeOption option = nodeOptionService.createOption(
@@ -42,6 +44,7 @@ public class NodeOptionController {
         return ResponseEntity.ok(nodeOptionService.toResponse(nodeOptionService.getOptionById(id)));
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteOption(@PathVariable Long id) {
         nodeOptionService.deleteOption(id);

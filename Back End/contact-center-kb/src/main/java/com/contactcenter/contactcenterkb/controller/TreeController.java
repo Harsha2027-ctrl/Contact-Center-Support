@@ -9,6 +9,7 @@ import com.contactcenter.contactcenterkb.service.TreeService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,6 +24,7 @@ public class TreeController {
     private final TreeService treeService;
     private final UserRepository userRepository;
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping
     public ResponseEntity<TreeResponse> createTree(@Valid @RequestBody TreeRequest request) {
         String email = SecurityContextHolder.getContext().getAuthentication().getName();
@@ -62,16 +64,19 @@ public class TreeController {
         return ResponseEntity.ok(treeService.toResponse(treeService.getTreeById(id)));
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/{id}/publish")
     public ResponseEntity<TreeResponse> publishTree(@PathVariable Long id) {
         return ResponseEntity.ok(treeService.toResponse(treeService.publishTree(id)));
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/{id}/unpublish")
     public ResponseEntity<TreeResponse> unpublishTree(@PathVariable Long id) {
         return ResponseEntity.ok(treeService.toResponse(treeService.unpublishTree(id)));
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteTree(@PathVariable Long id) {
         treeService.deleteTree(id);
