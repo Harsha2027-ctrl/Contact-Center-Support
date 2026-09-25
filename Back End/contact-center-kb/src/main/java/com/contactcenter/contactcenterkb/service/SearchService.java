@@ -5,6 +5,7 @@ import com.contactcenter.contactcenterkb.entity.TreeNode;
 import com.contactcenter.contactcenterkb.repository.TreeNodeRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -23,6 +24,7 @@ public class SearchService {
             "to", "for", "of", "on", "in", "and", "or", "with", "want", "need"
     );
 
+    @Transactional(readOnly = true)
     public List<SearchResultResponse> search(String query) {
         Set<String> queryWords = tokenize(query);
 
@@ -34,13 +36,26 @@ public class SearchService {
                             ? node.getQuestionText()
                             : node.getResolutionText();
 
+                    if (text == null) text = "";
+
                     Set<String> nodeWords = tokenize(text);
                     double score = calculateOverlapScore(queryWords, nodeWords);
 
+                    String treeName = "Unknown";
+                    Long treeId = null;
+                    try {
+                        if (node.getTree() != null) {
+                            treeName = node.getTree().getName();
+                            treeId = node.getTree().getId();
+                        }
+                    } catch (Exception e) {
+                        // ignore lazy loading issues
+                    }
+
                     return new SearchResultResponse(
                             node.getId(),
-                            node.getTree().getId(),
-                            node.getTree().getName(),
+                            treeId,
+                            treeName,
                             node.getNodeType().name(),
                             text,
                             score
@@ -48,7 +63,7 @@ public class SearchService {
                 })
                 .filter(result -> result.getRelevanceScore() > 0)
                 .sorted((a, b) -> Double.compare(b.getRelevanceScore(), a.getRelevanceScore()))
-                .limit(5)
+                .limit(10)
                 .collect(Collectors.toList());
     }
 
