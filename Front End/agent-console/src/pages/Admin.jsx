@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { getAllCategories, createCategory } from '../api/categories';
-import { getAllTrees, createTree, publishTree, unpublishTree } from '../api/trees';
+import { getAllTrees, createTree, publishTree, unpublishTree, deleteTree } from '../api/trees';
 import { getNodesByTree, createNode } from '../api/treeNodes';
 import { createOption } from '../api/nodeOptions';
 import { 
@@ -82,6 +82,18 @@ export default function Admin() {
     showMsg(isPublished ? 'Tree unpublished' : 'Tree published');
   };
 
+  const handleDeleteTree = async (id, name) => {
+    if (window.confirm(`Are you sure you want to delete the tree "${name}"? This cannot be undone.`)) {
+      try {
+        await deleteTree(id);
+        loadTrees();
+        showMsg('Tree deleted successfully');
+      } catch (err) {
+        showMsg('Failed to delete tree');
+      }
+    }
+  };
+
   const handleCreateNode = async (e) => {
     e.preventDefault();
     try {
@@ -118,17 +130,17 @@ export default function Admin() {
       </h1>
 
       <div style={{ marginBottom: 20 }}>
-  <Link to="/dashboard" style={{ 
-    display: 'inline-flex', 
-    alignItems: 'center', 
-    gap: 6, 
-    fontSize: 14, 
-    fontWeight: 500,
-    color: '#64748b'
-  }}>
-    <ArrowLeft size={16} /> Back to Dashboard
-  </Link>
-</div>
+        <Link to="/dashboard" style={{ 
+          display: 'inline-flex', 
+          alignItems: 'center', 
+          gap: 6, 
+          fontSize: 14, 
+          fontWeight: 500,
+          color: '#64748b'
+        }}>
+          <ArrowLeft size={16} /> Back to Dashboard
+        </Link>
+      </div>
 
       <p className="page-subtitle">
         Manage categories, decision trees, nodes and options.
@@ -175,6 +187,7 @@ export default function Admin() {
           <input placeholder="Tree name" value={treeName} onChange={e => setTreeName(e.target.value)} required style={{ flex: 1, minWidth: 160 }} />
           <button type="submit" className="btn-primary">Create</button>
         </form>
+
         <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
           {trees.map(t => (
             <div key={t.id} style={{
@@ -187,13 +200,24 @@ export default function Admin() {
                   {t.isPublished ? 'Published' : 'Draft'}
                 </span>
               </div>
-              <button
-                onClick={() => handlePublish(t.id, t.isPublished)}
-                className={t.isPublished ? 'btn-outline' : 'btn-success'}
-                style={{ padding: '6px 12px', fontSize: 13 }}
-              >
-                {t.isPublished ? <><XCircle size={14} /> Unpublish</> : <><CheckCircle size={14} /> Publish</>}
-              </button>
+
+              <div style={{ display: 'flex', gap: 8 }}>
+                <button
+                  onClick={() => handlePublish(t.id, t.isPublished)}
+                  className={t.isPublished ? 'btn-outline' : 'btn-success'}
+                  style={{ padding: '6px 12px', fontSize: 13 }}
+                >
+                  {t.isPublished ? <><XCircle size={14} /> Unpublish</> : <><CheckCircle size={14} /> Publish</>}
+                </button>
+
+                <button
+                  onClick={() => handleDeleteTree(t.id, t.name)}
+                  className="btn-danger"
+                  style={{ padding: '6px 12px', fontSize: 13 }}
+                >
+                  Delete
+                </button>
+              </div>
             </div>
           ))}
         </div>
@@ -219,17 +243,21 @@ export default function Admin() {
                 <option value="QUESTION">QUESTION</option>
                 <option value="LEAF">LEAF</option>
               </select>
+
               {nodeType === 'QUESTION' && (
                 <textarea placeholder="Question text" value={questionText} onChange={e => setQuestionText(e.target.value)} rows={2} />
               )}
+
               {nodeType === 'LEAF' && (
                 <textarea placeholder="Resolution text" value={resolutionText} onChange={e => setResolutionText(e.target.value)} rows={3} />
               )}
+
               <input placeholder="Parent Node ID (empty = root)" value={parentNodeId} onChange={e => setParentNodeId(e.target.value)} />
               <button type="submit" className="btn-primary" style={{ alignSelf: 'flex-start' }}>Create Node</button>
             </form>
 
             <h4 style={{ fontSize: 14, color: '#64748b', marginBottom: 10 }}>Existing Nodes</h4>
+
             <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
               {nodes.map(n => (
                 <div key={n.id} style={{ padding: '8px 12px', background: '#f8fafc', borderRadius: 8, fontSize: 13 }}>
@@ -248,12 +276,14 @@ export default function Admin() {
         <h3 style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 16 }}>
           <Link2 size={18} /> 4. Node Options
         </h3>
+
         <form onSubmit={handleCreateOption} style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
           <input placeholder="From Node ID" value={optionNodeId} onChange={e => setOptionNodeId(e.target.value)} required style={{ width: 130 }} />
           <input placeholder="Option Label" value={optionLabel} onChange={e => setOptionLabel(e.target.value)} required style={{ flex: 1, minWidth: 140 }} />
           <input placeholder="Next Node ID" value={nextNodeId} onChange={e => setNextNodeId(e.target.value)} required style={{ width: 130 }} />
           <button type="submit" className="btn-primary">Create Option</button>
         </form>
+
         <p style={{ fontSize: 13, color: '#94a3b8', marginTop: 12 }}>
           Tip: Create a QUESTION and a LEAF first, then link them with an option.
         </p>
