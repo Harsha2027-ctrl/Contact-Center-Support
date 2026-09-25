@@ -1,13 +1,22 @@
 package com.contactcenter.contactcenterkb.service;
 
+import com.contactcenter.contactcenterkb.dto.TreeResponse;
 import com.contactcenter.contactcenterkb.entity.Category;
+import com.contactcenter.contactcenterkb.entity.NodeOption;
+import com.contactcenter.contactcenterkb.entity.Session;
+import com.contactcenter.contactcenterkb.entity.SessionPath;
 import com.contactcenter.contactcenterkb.entity.Tree;
+import com.contactcenter.contactcenterkb.entity.TreeNode;
 import com.contactcenter.contactcenterkb.entity.User;
 import com.contactcenter.contactcenterkb.repository.CategoryRepository;
+import com.contactcenter.contactcenterkb.repository.NodeOptionRepository;
+import com.contactcenter.contactcenterkb.repository.SessionPathRepository;
+import com.contactcenter.contactcenterkb.repository.SessionRepository;
+import com.contactcenter.contactcenterkb.repository.TreeNodeRepository;
 import com.contactcenter.contactcenterkb.repository.TreeRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import com.contactcenter.contactcenterkb.dto.TreeResponse;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -17,6 +26,10 @@ public class TreeService {
 
     private final TreeRepository treeRepository;
     private final CategoryRepository categoryRepository;
+    private final SessionRepository sessionRepository;
+    private final SessionPathRepository sessionPathRepository;
+    private final TreeNodeRepository treeNodeRepository;
+    private final NodeOptionRepository nodeOptionRepository;
 
     public Tree createTree(Long categoryId, String name, User createdBy) {
         Category category = categoryRepository.findById(categoryId)
@@ -61,8 +74,31 @@ public class TreeService {
         return treeRepository.save(tree);
     }
 
+    @Transactional
     public void deleteTree(Long id) {
         Tree tree = getTreeById(id);
+
+        // 1. Delete SessionPaths of sessions belonging to this tree
+        List<Session> sessions = sessionRepository.findByTreeId(id);
+        for (Session session : sessions) {
+            List<SessionPath> paths = sessionPathRepository.findBySessionId(session.getId());
+            sessionPathRepository.deleteAll(paths);
+        }
+
+        // 2. Delete Sessions of this tree
+        sessionRepository.deleteAll(sessions);
+
+        // 3. Delete NodeOptions of nodes belonging to this tree
+        List<TreeNode> nodes = treeNodeRepository.findByTreeId(id);
+        for (TreeNode node : nodes) {
+            List<NodeOption> options = nodeOptionRepository.findByNodeId(node.getId());
+            nodeOptionRepository.deleteAll(options);
+        }
+
+        // 4. Delete TreeNodes of this tree
+        treeNodeRepository.deleteAll(nodes);
+
+        // 5. Finally delete the Tree
         treeRepository.delete(tree);
     }
 
